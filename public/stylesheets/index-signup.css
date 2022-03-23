@@ -1,0 +1,361 @@
+*{
+    font-family: 'Poppins', sans-serif;
+   margin: 0;
+   padding: 0;
+
+}
+body,html{
+    height: 100%;
+}
+.home{
+    width: 80%;
+    min-height: 100vh;
+    
+    position: absolute;
+    top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+nav{
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items: center;
+}
+nav img{
+    width: 150px;
+
+}
+.nav-links{
+    flex: 1;
+    text-align: right;
+}
+.nav-links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+.nav-links ul li a{
+    color: #00854A;
+    text-decoration: none;
+    font-size: 14px;
+}
+.nav-links ul li ::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background:#00854A;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+.nav-links ul li :hover::after{
+   
+    width: 100%;
+}
+nav .fa{
+    display: none;
+}
+.row{
+    
+    display: flex;
+  margin:10px 100px;
+    align-items: center;
+    
+}
+.column1{
+    flex-basis:60%;
+    
+}
+.column2{
+    margin-left: 50px;
+        flex-basis:40%;  
+        padding: 10px;
+        border: 1px solid rgb(124, 124, 124);
+         background: rgb(231, 231, 231);
+         border-radius: 10px;
+         height: 300px;
+}
+.wallpaper{
+    width: 80%;
+    margin: auto;
+}
+.login-container{
+    padding: 30px;
+}
+.wallpaper img{
+   
+    width: 100%;
+}
+
+.login-content input{
+    width: 80%;
+    height: 20px;
+    display: block;
+    border: none;
+    padding: 5px 10px;
+    margin: 8px 20px;
+    border: 1px solid grey;
+    
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #00854A;
+  }
+  .wallpaper-content p{
+      margin: 15px 10px;
+  }
+  .signup-btn{
+      list-style-type: none;
+      margin-right: 8px;
+      margin-left:5px ;
+  }
+ .signup-btn a{
+     text-decoration: none;
+     border: 1px solid #00854A;
+     background: transparent;
+     color: #00854A;
+     border-radius: 5px;
+     padding: 5px;
+
+ }
+ .signup-btn a{
+     font-size: 14px;
+ }
+ .signup-btn a:hover{
+    color: white;
+    background: #00854A;
+        
+    }
+    select{
+        width: 55%;
+        height: 30px;
+        border: none;
+        padding: 5px 10px;
+        margin: 8px 20px;
+        border: 1px solid grey;
+        
+      }
+  .gts-btn input{
+    width: 60%;
+    align-items: center;
+    margin: 15px 10px ;
+    padding: 10px 10px;
+    /* margin-left: 18%; */
+    
+    border: 1px solid #00854A;
+    border-radius: 2px;
+    color: white;
+    background: #00854A;
+    box-sizing: content-box;
+}
+.gts-btn input:hover{
+    
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 3px grey;
+        
+    }
+.login-btn input{
+    width: 80%;
+    height: 20px;
+
+    margin: 8px 20px ;
+    padding: 5px 10px;
+    border: 1px solid #00854A;
+    color: white;
+    background: #00854A;
+    box-sizing: content-box;
+}
+.login-btn input:hover{
+    
+cursor: pointer;
+box-shadow: 0px 0px 5px 3px grey;
+    
+}
+.login-container p{
+    width: 100%;
+    margin: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+.login-container h2{
+    width: 100%;
+    margin-bottom: 30px;
+    text-align: center;
+}
+@media(max-width:700px)
+{
+    .nav-links{
+        position: absolute;
+        background: rgb(221, 221, 221);
+        height: 100vh;
+        width: 200px;
+        top: 0;
+        right: -200px;
+        text-align: left;
+        z-index: 2;
+        transition: 1s;
+        }
+        nav .fa{
+            display: block;
+            color: #00854A;
+            margin: 10px;
+            font-size: 22px;
+            cursor: pointer;
+        }
+        .nav-links ul{
+            padding: 30px;
+        }
+    
+    .row{
+        flex-direction: column;
+
+    }
+}
+
+
+/*---------------signup-----------*/
+
+
+.signup-h{
+    flex-basis: 10%;
+}
+.signup-container{
+    flex-basis: 10%;
+    margin-bottom: 0px;
+}
+.signup-container1{
+    flex-basis: 10%;
+    margin-bottom: 0px;
+}
+.signup-box{
+    width: 80%;
+   justify-content: center;
+    text-align: center;
+    flex-basis: 80%;
+    margin-top: 45px;
+    position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+}
+.signup-content input{
+    width: 50%;
+    height: 20px;
+    border: none;
+    padding: 5px 10px;
+    margin: 8px 20px;
+    border: 1px solid grey;
+    
+}
+.signup-content select{
+    width: 55%;
+    height: 30px;
+    border: none;
+    padding: 5px 10px;
+    margin: 8px 20px;
+    border: 1px solid grey;
+    
+  }
+.signup-column h2{
+    text-align: center;
+    margin: 5px;
+}
+.signup-column{
+    margin: 100px 50px;
+    display: flex;
+    flex-direction: column;
+        padding: 15px;
+        border: 1px solid rgb(221, 221, 221);
+         background: rgb(235, 235, 235);
+         border-radius: 10px;
+         height: 450px;
+         width: 550px;
+         position: absolute;
+         top: 40%;
+         left: 45%;
+         transform: translate(-50%, -50%);
+}
+.signup-button input{
+    width: 50%;
+    height: 20px;
+
+    margin: 8px 20px ;
+    padding: 5px 10px;
+    border: 1px solid #00854A;
+    color: white;
+    background: #00854A;
+    box-sizing: content-box;
+}
+.signup-button input:hover{
+        cursor: pointer;
+    box-shadow: 0px 0px 5px 3px grey;
+}
+.steps{
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+}
+.regi-succ{
+    text-align: center;
+    background-color: #00854A;
+    color: aliceblue;
+}
+.steps1{
+    text-align: center;
+   
+}
+.steps1 pre{
+    font-size: 11.8px;
+   
+}
+
+#errors{
+    color: white;
+    background-color: red;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.circle1{
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    padding: 10px;
+    color: #00854A;    
+    border: 1px solid  grey;
+    text-align: center;
+    font: 14px Arial, sans-serif;
+    position: relative;
+  }
+  .circle2{
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    padding: 10px;
+    color:  #00854A;
+    border: 1px solid  grey;
+    text-align: center;
+    font: 14px Arial, sans-serif;
+    position: relative;
+  }
+  .circle3{
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    padding: 10px;
+    background: white;
+    color:  #00854A;
+    border: 1px solid  grey;
+    text-align: center;
+    font: 14px Arial, sans-serif;
+    position: relative;
+  }
+  .hr-line {
+    width: 10%;
+    position: relative;
+    margin: 18px;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-bottom: 1px solid grey;
+  }

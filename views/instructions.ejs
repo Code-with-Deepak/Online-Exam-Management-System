@@ -1,0 +1,60 @@
+<html>
+    <head><title>Instructions</title>
+    <link rel="stylesheet" href="/stylesheets/instruction.css">
+    </head>
+    <body class="instruct">
+       <h1>Instructions</h1>
+       <div id="timer"> 0 minutes : 11 seconds</div>
+                <hr>
+               <center><textarea readonly class="txtarea" rows="18" cols="63">
+                     Welcome To Online Examination Portal
+
+
+    Here are the common instructions to be followed:
+
+    1) Keep a Good configuration Laptop to avoid interruption.
+    2) Don't try to Switch tabs.
+    3) Switching tabs will Eliminate You from Test. 
+    4) After the Exam time is over, test will be submitted automatically.
+    5) Thankyou for using Online Portal.
+                        
+    Exam Timing : As said by Adminstration. 
+    Exam Mode: Online
+                    
+                                  All the Best !
+</textarea></center>
+<br><br><hr>
+                    <div class="strtexam">
+                      <form action="/examAttempt" id="exam" method="post">
+                        <input type="hidden" value="<%= exid %>" name="exid">
+                        <input type="hidden" id="stime" value="<%= start %>" name="stime">
+                        <input type="hidden" id="stop" value="<%= stop %>" name="stop">
+                        <input type="hidden" value="1" name="qid">
+                        <input type="hidden" value="<%= exname %>" name="exname">
+                        <input type="hidden" value="<%= totalq %>" name="total"> 
+                        <center><button class="btn" id="btn" >Start Course</button></center>
+                    </form>
+                      </div>
+    </body>
+</html>
+
+ <script>
+     window.onload = function() {
+  var minute = 0;
+  var sec = 10;
+  setInterval(function() {
+    document.getElementById("timer").innerHTML = minute + " minutes : " + sec+" seconds";
+    sec--;
+    if(minute == 0 && sec == 0){
+      document.getElementById('exam').submit();
+      //window.location = "/examAttempt";
+      }
+    if (sec == 0) {
+      minute --;
+      sec = 60;
+    }
+  }, 1000);
+}
+ </script>
+ 
+

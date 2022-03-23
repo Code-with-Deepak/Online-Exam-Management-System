@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/editExam.css">
+        <script src="/javascripts/editExam.js"></script>
+    </head>
+    <nav1>
+        <a href="index.jsp"><img src="/images/logo.png" ></a>
+        <div class="nav-links" id="nav-links">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="#">Welcome , Admin</a></li>
+                <li><a href="/adminHome">Home</a></li>
+                <li><a href="/logout"><img src="/images/Logouthead.png">Logout</a></li>
+                
+            </ul>
+        </div>
+    </nav1>
+        <body style="background-image: url(edit.jpg); background-position: center; background-repeat: no-repeat;">
+            <center><h2>Edit Examination</h2></center>
+            <div class="form-popup" id="editexam">
+            <form action="/updateExam" method="POST">
+                <table align="center">
+                <tr><th>Exam Id</th><td><input type="text" value="<%=message1[0].exam_id %>" name="exid" readonly></td></tr>    
+                <tr><th>Exam Name</th><td><input type="text" name="sub" value="<%=message1[0].exam_name%>"></td></tr>
+                <tr><th>Total Questions</th><td><input type="number" name="total" value="<%=message1[0].total_questions%>"></td></tr>
+                <tr><th>Attempt</th><td><input type="number" name="attempt" value="<%=message1[0].attempt%>"></td></tr>
+                <tr><th>Start Time</th><td><input type="datetime-local" name="start" value="<%=message1[0].start_time%>"></td></tr>
+                <tr><th>End Time</th><td><input type="datetime-local" name="stop" value="<%=message1[0].stop_time%>"></td></tr>
+                <tr><th>For Dept</th> <%
+                    var dept_find = message1[0].for_dept;
+                if(dept_find.includes("IT")) { %>
+                    <td><input type="checkbox" name="dept" value="IT" checked>IT
+                <%} else { %>
+                    <td><input type="checkbox" name="dept" value="IT">IT <% } %>
+                <%
+                if(dept_find.includes("CSE")) { %>
+                    <input type="checkbox" value="CSE" name="dept" checked>CSE
+                <%} else { %>
+                    <input type="checkbox" value="CSE" name="dept" >CSE <% } %>
+                <%
+                if(dept_find.includes("ECE")) { %>
+                    <input type="checkbox" value="ECE" name="dept" checked>ECE
+                <%} else { %>
+                     <input type="checkbox" value="ECE" name="dept">ECE <% } 
+                if(dept_find.includes("BT")) { %>
+                    <input type="checkbox" value="BT" name="dept" checked>BT
+                    <%} else { %>
+                    <input type="checkbox" value="BT" name="dept" >BT <% }
+                if(dept_find.includes("FT")) { %>
+                    <input type="checkbox" value="FT" name="dept" checked>FT
+                    <%} else { %>
+                    <input type="checkbox" value="FT" name="dept">FT <% } 
+                if(dept_find.includes("BME")) { %>
+                    <input type="checkbox" value="BME" name="dept" checked>BME</td>
+                    <%} else { %>
+                    <input type="checkbox" value="BME" name="dept">BME</td></tr> <% } %>
+                    <tr><th>For Year</th><%
+                        var year_find = message1[0].for_year;
+                        if(year_find.includes("1")) { %>
+                            <td><input type="checkbox" name="year" value="1" checked>1
+                        <%} else { %>
+                            <td><input type="checkbox" value="1"name="year">1 <% } %>
+                        <%
+                        if(year_find.includes("2")) { %>
+                            <input type="checkbox" name="year"value="2" checked>2
+                        <%} else { %>
+                            <input type="checkbox"name="year" value="2" >2<% } %>
+                        <%
+                        if(year_find.includes("3")) { %>
+                            <input type="checkbox" name="year"value="3" checked>3
+                        <%} else { %>
+                             <input type="checkbox" name="year" value="3" >3 <% } 
+                        if(year_find.includes("4")) { %>
+                            <input type="checkbox" name="year" value="4" checked>4
+                            <%} else { %>
+                            <input type="checkbox" name="year" value="4" >4 <% } %></tr>
+                </table><br>
+                <center><input type="submit" value="Update"></center>
+            </form>
+                </div>
+                <center><h2>View Questions</h2></center>
+            <div class="form-popup" id="viewques">
+    <table align="center"> 
+            <th>Question Id</th>
+            <th>Question</th>
+            <th>Option 1</th>
+            <th>Option 2</th>
+            <th>Option 3</th>
+            <th>Option 4</th>
+            <th>Answer</th>
+            <th>Edit</th>
+            <% for(var i=0;i<message.length;i++){ %> 
+            <tr>
+                <td><%= message[i].question_id %></td>
+                <td><%= message[i].question %></td>
+                <td><%= message[i].ans1 %></td>
+                <td><%= message[i].ans2 %></td>
+                <td><%= message[i].ans3 %></td>
+                <td><%= message[i].ans4 %></td>
+                <td><%= message[i].ans%></td>
+                <td><%= message[i].exam_id %></td>
+            <td><a href="editQues/<%=message[i].exam_id%>/<%= message[i].question_id%>">Edit</a></td> <%
+        }
+        %> </table></div>
+        </body>
+</html>

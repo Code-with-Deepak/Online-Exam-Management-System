@@ -1,0 +1,11 @@
+question_id,question,ans1,ans2,ans3,ans4,ans
+1, Which page directive should be used in JSP to generate a PDF page?,Content Type,generatePdf,typePdf,contentPdf,Content Type
+2,Which is not a directive?,include,page ,export,useBean,page
+3,“request” is instance of which one of the following classes?,HttpServlet,Response,HttpServletRequest,Request,HttpServletRequest
+4,Which attribute uniquely identification element?,ID,Class,name,scope,ID
+5,How many primitive datatypes are there in java?,6,7,8,9,8
+6,Size of INT in Java?,16 Bit,32Bit,8Bit,64 Bit,32Bit
+7,In java True is ?,Boolean,value 0,value 1,keyword,Boolean
+8,What are the features of Java?,Platform Independent,simple,secure,All of the above,All of the above
+9,Who is known as father of Java Programming Language?,James Gosling,Grahambel,Dennis Ritchie,Steve Jobs,James Gosling
+10,Which provides runtime environment for java byte code to be executed?,JRE,JVM,JDK,All of the above,JVM

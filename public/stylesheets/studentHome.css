@@ -1,0 +1,91 @@
+
+.course{
+    font-size: 22px;
+    text-align: left;
+    margin-left: 0;
+    border: 2px solid rgb(223, 223, 223);
+    }
+.msg {
+    background-color: red;
+    color: rgb(34, 34, 34);
+    font-size: 17px;
+    text-align: center;
+    padding: 5px;
+}
+.imggrad{
+    cursor: pointer; 
+    border: none;
+}
+.imggrad:hover{
+    border: 1px solid #00854A;
+}
+.course-body{
+    border: 2px solid rgb(223, 223, 223);
+    padding: 5px;
+    text-align: left;
+    margin-top: 50px;
+    margin-left: 10px;
+    width: fit-content;
+    float: left;
+    position: inherit;
+    font-size: 14px;
+}
+.btn{
+    float: right;
+    background-color: #00854A;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.subname{
+    font-size: 16px;
+    font-weight: bold;
+}
+nav1{
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items: center;
+}
+nav1 img{
+    width: 150px;
+
+}
+nav1 ul img{
+    height: 15px;
+    width: 15px;
+}
+.nav-links{
+    flex: 1;
+    text-align: right;
+}
+.nav-links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+.nav-links ul li a{
+    color: #00854A;
+    text-decoration: none;
+    font-size: 14px;
+}
+.nav-links ul li ::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background:#00854A;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+.nav-links ul li :hover::after{
+   
+    width: 100%;
+}
+
+nav1 .fa{
+    display: none;
+}

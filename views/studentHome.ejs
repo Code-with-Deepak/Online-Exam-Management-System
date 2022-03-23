@@ -1,0 +1,38 @@
+<html>
+    <head><title>Welcome,Student</title>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/studentHome.css">
+        <script src="/javascripts/examPreview.js"></script>
+    </head>
+    <body>
+        <nav1>
+            <a href="index.jsp"><img src="images/logo.png" ></a>
+            <div class="nav-links" id="nav-links">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="#">Welcome , <%- user %></a></li>
+                    <li><a href="/adminHome">Home</a></li>
+                    <li><a href="/logout"><img src="images/Logouthead.png">Logout</a></li>
+                    
+                </ul>
+            </div>
+        </nav1>
+        <% for(var i=0;i<message.length;i++){ %>
+        <div class="course-body">
+            <form action="/preview" method="POST">
+                <input type="hidden" value="<%=message[i].exam_name%>" name="exname">
+                <input type="hidden" value="<%=message[i].exam_id%>" name="exid">
+                <input type="hidden" value="<%=message[i].start_time%>" name="stime">
+                <input type="hidden" value="<%=message[i].stop_time%>" name="stop">
+                <input type="hidden" value="<%=message[i].attempt%>" name="attempt">
+                <input type="hidden" value="<%=message[i].total_questions %>" name="total">
+                <button class="imggrad"><img src="/images/studentexam.png" width="300" height="280"></button> 
+        <p class="subname"><%=message[i].exam_name%></p>
+        <button class="btn">Expand</button> 
+    </form>
+    </div>
+    <% } %>
+    </div>
+    </body>
+</html>
+

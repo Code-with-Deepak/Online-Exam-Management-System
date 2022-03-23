@@ -1,0 +1,163 @@
+<html>
+    <head>
+        <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">  
+        <title>Admin page</title>
+        <link rel="stylesheet" type="text/css" href="stylesheets/adminHome.css">
+        <script src="javascripts/adminHome.js"></script>
+    </head>
+    <nav1>
+        <a href="index.jsp"><img src="images/logo.png" ></a>
+        <div class="nav-links" id="nav-links">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="#">Welcome , Admin</a></li>
+                <li><a href="/adminHome">Home</a></li>
+                <li><a href="/logout"><img src="images/Logouthead.png">Logout</a></li>
+                
+            </ul>
+        </div>
+    </nav1>
+    <div class="msg"><%- succmsg %></div>
+    <div class="msg"><%= succmessage %></div>
+    <body onload="frmdisp()">
+        <input type="hidden" readonly value="<%= op%>" id="frmdisp">
+        <div class="mid">
+            <div class="nav-bar">
+                <div class="nav-elements"><button class="open-button" onclick="Addques()"><img  src="images/Add Exam.png"/></button></div>
+                <div class="element-head">ADD EXAM</div>
+                <div class="nav-elements"><button class="open-button" onclick="Viewques()"><img src="images/View Exam.png"/></button></div>
+                <div class="element-head">VIEW EXAM</div>
+                <div class="nav-elements"><button class="open-button" onclick="Adddetail()"><img src="images/Add Student.png"/></button></div>
+                <div class="element-head">ADD STUDENT</div>
+                <div class="nav-elements"><button class="open-button" onclick="viewStudent()"><img src="images/Edit Student.png"/></button></div>
+                <div class="element-head">VIEW STUDENT</div>
+                <div class="nav-elements"><button class="open-button" onclick="ViewResult()"><img src="images/All Result.png"></button></div>
+                <div class="element-head">VIEW RESULT</div>
+            </div>
+        <div class="mid-content">
+            <input type="hidden" name="open" id="frmdisp">
+        <div class="form-popup" id="addques">
+            <h2>Add Exam<button class="close" onclick="document.getElementById('addques').style.display = 'none'">&#10008;</button></h2>
+            <form action="/addExam" method="post">
+                <table border="0">
+                    <tr><td>Subject Name</td><td></td>
+                    <td><input type="text" name="sub" required><br><br></td></tr>
+                    <tr><td>Total Questions</td><td></td>
+                    <td><input type="number" name="total" required><br><br></td></tr>
+                    <tr><td>Attempt Allowed</td><td></td>
+                        <td><input type="number" name="attempt"><br><br></td></tr>
+                    <tr><td>Exam Start Date</td><td></td>
+                    <td><input type="datetime-local" id="start" required name="start"><br><br></td></tr>
+                    <tr><td>Exam End Date</td><td></td>
+                    <td><input type="datetime-local" name="stop" required><br><br></td></tr>
+                    <tr><td>Select Department</td><td></td>
+                    <td><input type="checkbox" name="dept" value="IT">IT<input type="checkbox" name="dept" value="CSE">CSE<input type="checkbox" name="dept" value="ECE">ECE<input type="checkbox" name="dept" value="BT">BT<input type="checkbox" name="dept" value="FT">FT<input type="checkbox" name="dept" value="BME">BME</td>
+                    <tr><td>Select Year</td><td></td>
+                    <td><input type="checkbox" name="year" value="1">1st<input type="checkbox" name="year" value="2">2nd<input type="checkbox" name="year" value="3">3rd<input type="checkbox" name="year" value="4">4th<br><br></td></tr>
+                    </table>  <center>                  
+            <button class="open-button"><img src="./images/add exam.png"></button>
+        <div>Add Exam</div>
+        </center>
+            </form>
+        </div>
+        <div class="form-popup" id="viewques">
+            <h2>View Exam<button class="close" onclick="document.getElementById('viewques').style.display = 'none'">&#10008;</button></h2>
+<center><table border="2"> 
+        <th>Exam ID</th>
+        <th>Subject Name</th>
+        <th>Total Questions</th>
+        <th>Attempt</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>For Dept</th>
+        <th>For Year</th>
+        <th>Add Questions</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <% for(var i=0;i<message.length;i++)
+        { %>
+            <tr>
+                <td><%= message[i].exam_id %></td>
+                <td><%= message[i].exam_name %></td>
+                <td><%= message[i].total_questions %></td>
+                <td><%= message[i].attempt %></td>
+                <td><%= message[i].start_time %></td>
+                <td><%= message[i].stop_time %></td>
+                <td><%= message[i].for_dept.trim() %></td>
+                <td><%= message[i].for_year.trim() %></td>
+                <td><a href="/filechooser/<%= message[i].exam_id %>"><img src="images/add-q.png"></a></td>
+                <td><a href="/editExam/<%= message[i].exam_id %>"><img src="images/penciledit.png"></a></td>
+                <td><a href="javascript:remove(<%= message[i].exam_id %>)"><img src="images/deleteexam.png"></a></td>
+            </tr>
+        <% } %>
+        
+        </table></center> 
+
+        </div>
+
+        <div class="form-popup" id="viewStudent">
+            <h2>View Students<button class="close" onclick="document.getElementById('viewStudent').style.display = 'none'">&#10008;</button></h2>
+<center><table border="2"> 
+        <th>Student Name</th>
+        <th>Department</th>
+        <th>Year</th>
+        <th>Register Number</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Edit</th>
+        <th>Remove</th>
+        </tr>
+        <% for(var i=0;i<usemessage.length;i++){
+            %>
+            <tr>
+                <td><%=usemessage[i].Name %></td>
+                <td><%=usemessage[i].dept %></td>
+                <td><%=usemessage[i].year %></td>
+                <td><%=usemessage[i].regno %></td>
+                <td><%=usemessage[i].email %></td>
+                <td><%=usemessage[i].mobile %></td>
+                <td><a href="/editstudent/<%=usemessage[i].regno %>"><img src="images/penciledit.png"></a></td>
+                <td><a href="/editstudent/<%=usemessage[i].regno %>"><img src="images/deleteexam.png"></a></td>
+            </tr>
+      <%  } %>
+        </table></center>
+
+        </div>
+
+        <div class="form-popup" id="viewresult">
+            <h2>View Result<button class="close" onclick="document.getElementById('viewresult').style.display = 'none'">&#10008;</button></h2>
+            <input style="width: 87%;" class="searchbar" type="text" id="UserInput" onkeyup="Search()" placeholder="Search By RegNo">
+            <a style="background-color: #00854A; color: honeydew; text-decoration: none; border:none; padding: 8px; border-radius: 20px;" href="/exportData">Export Marks</a>
+            <br><br>
+            <center><table id="dbInput" border="2"> 
+        <tr><th>Exam ID</th>
+        <th>Subject Name</th>
+        <th>Student-Regno</th>
+        <th>Rem Attempt</th>
+        <th>Attempted</th>
+        <th>Marks</th>
+        <th>Reset Attempt</th></tr>
+        <% for(var i=0;i<resmessage.length;i++){%>
+            <tr>
+                <td><%=resmessage[i].exam_id%></td>
+                <td><%=resmessage[i].exam_name%></td>
+                <td><%=resmessage[i].regno%></td>
+                <td><%=resmessage[i].attempt_rem%></td>
+                <td><%=resmessage[i].attempted%></td>
+                <td><%=resmessage[i].marks%></td>
+                <td>
+                    <form action="/resetAttempt" method="post">
+                        <input type="hidden" value="<%=resmessage[i].exam_name%>" name="exname">
+                        <input type="hidden" value="<%=resmessage[i].regno %>" name="regno">
+                        <button>Reset</button>
+                    </form>
+                </td>
+            </tr>
+        <%}%>
+            </div>
+        </div>
+        </div>
+        
+        
+    </body>        
+</html>

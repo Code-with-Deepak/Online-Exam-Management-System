@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/examPreview.css">
+        <script src="/javascripts/examPreview.js"></script>
+    </head>
+    <body>
+        <nav1>
+            <a href="/"><img src="images/logo.png" ></a>
+            <div class="nav-links" id="nav-links">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="#">Welcome , <%- user %></a></li>
+                    <li><a href="/adminHome">Home</a></li>
+                    <li><a href="/logout"><img src="images/Logouthead.png">Logout</a></li>
+                    
+                </ul>
+            </div>
+        </nav1>
+        <div class="right-pane">
+            <div class="c-name">
+               Examination Name : <%= exname %>
+            </div><br>
+            <div class="c-details">
+                <div class="clock" id="clockdiv"></div>
+                <h5>Course Starts At : <%= start%></h5>
+                <h5>Course Ends  : <%= stop %></h5>
+                <h5>Attempt Remaining : <%= rem %></h5>
+                <h5><div id="msg"></div></h5>
+                <form action="/instructions" method="post">
+                    <input type="hidden" value="" name="exid">
+                    <input type="hidden" id="stime" value="<%= start %>" name="stime">
+                    <input type="hidden" id="stop" value="<%= stop %>" name="stop">
+                    <input type="hidden" value="<%=rem %>" name="attempt">
+                    <input type="hidden" value="<%= exname %>" name="exname">
+                    <input type="hidden" id="rem" value="<%= rem %>" name="rem">
+                    <input type="hidden" value="<%= totalq %>" name="total"> 
+                    <button class="btn" id="btn" onclick="vali()">Start Course</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+

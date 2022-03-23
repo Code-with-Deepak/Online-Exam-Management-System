@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam management System - Student Login</title>
+    <link rel="stylesheet" href="stylesheets/index-signup.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,200&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <section class="home">
+        <nav>
+            <a href="index.jsp"><img src="images/logo.png" ></a>
+            <div class="nav-links" id="nav-links">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    
+                </ul>
+            </div>
+            <i class="fa fa-bars"  onclick="showMenu()"></i>
+            <li class="signup-btn"><a href="/admin">Admin</a></li>
+            <li class="signup-btn"><a href="/signup" >Sign Up</a></li>
+        </nav>
+        <div class="regi-succ"><%= message %></div>
+        <div class="row">
+            <div class="column1">
+                <div class="wallpaper">
+                    <img src="images/homebg.jpg" alt="wallpaper">
+                </div>
+                <!-- <div class="wallpaper-content">
+                    <p>Welcome to Online Exam Management System.</p>
+
+                </div> -->
+                <div class="gts-btn">
+                   <center><input type="submit" onclick="callSignUp()" value="Get started"></center> 
+                </div>
+            </div>
+             <div class="column2">
+                <div class="login-container">
+                                        <h2>Student Login</h2>
+                <form action="/login" method="POST">
+                    <div class="login-content">
+                        <input type="text" name="regno" id="regno" placeholder="Register No">
+                        <input type="password" name="pass" id="passowrd" placeholder="Password">
+                    </div>
+                    <div class="login-btn">
+                        <input type="submit" value="Log In">
+                    </div>
+                    <center><a href="fpass.jsp">Forgot Password ?</a></center>
+                    
+                </form>
+                </div>
+             </div>
+    
+            
+            
+        </div>
+    </section>
+    
+     <!-----javascript to togle----->
+     <script>
+        var navLinks = document.getElementById("nav-links");
+        function showMenu(){
+            navLinks.style.right="0";
+        }
+        function hideMenu(){
+            navLinks.style.right="-200px";
+        }
+        function callSignUp(){
+            location.href = 'signup.html';
+        }
+    </script>
+</body>
+</html>

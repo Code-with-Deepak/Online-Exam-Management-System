@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/review.css">
+    </head>
+    <body>
+        <nav1>
+            <a href="/"><img src="images/logo.png" ></a>
+            <div class="nav-links" id="nav-links">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="#">Welcome , <%- user %></a></li>
+                    <li><a href="/adminHome">Home</a></li>
+                    <li><a href="/logout"><img src="images/Logouthead.png">Logout</a></li>
+                    
+                </ul>
+            </div>
+        </nav1>
+        <input type="hidden" value="<%=total%>" id="total">
+        <input type="hidden" value="<%=qid%>" id="qid">
+        <input type="hidden" value="<%=stu_ans %>" id="stu_ans">
+        <table align="center">
+            <tr>
+                <th>Question Id</th>
+                <th>Answer Status</th>
+            </tr>
+            <% for(var i=1;i<=total;i++)
+            { %>
+                <tr>
+                    <td><%= i %></td>
+                    <td><div id="status<%=i%>"></div></td>
+                </tr>
+
+            <% } %>
+        </table>
+        <% for(var j=0;j<total;j++)
+        { %>
+            <input type="hidden" value="<%=query[j].ans %>" id="dans<%=j%>">
+        <% } %>
+        <center><button onclick="goback()" class="submitb">Go Back</button>
+            <form action="/examResult" method="post">
+                <input type="hidden" value="" id="marks" name="marks" readonly>
+        <input type="hidden" value="<%=exid%>" id="exid" name="exid">
+            <button onclick="submit()" class="submit">Submit All</button>
+            </form></center>
+        
+        <script>
+            function goback(){
+                history.back();
+            }
+            var total = document.getElementById('total').value;
+            var totalint = parseInt(total);
+            var qid = document.getElementById('qid').value;
+            var curr_ques = "answer"+qid;
+            var stu_ans = document.getElementById('stu_ans').value;
+            localStorage.setItem(curr_ques,stu_ans);
+            var str = "";
+            var stat = "";
+            var mark = 0;
+            for(var i=1;i<=10;i++)
+            {
+                str = "answer"+i.toString();
+                stat = "status"+i.toString();
+                dans = "dans"+(i-1).toString();
+                if(localStorage.getItem(str) == document.getElementById(dans).value)
+                mark++;
+                if(localStorage.getItem(str) != null){
+                document.getElementById(stat).innerHTML = "Answer Saved";
+                }
+                else{
+                    document.getElementById(stat).innerHTML = "Answer Not Saved";
+                }
+            }
+            document.getElementById('marks').value = mark;
+            function submit(){
+                var a = confirm("By clicking submit , Your scores will be recorded");
+                if(a==true)
+                {
+                    
+                }
+            }
+        </script>
+    </body>
+</html>
+

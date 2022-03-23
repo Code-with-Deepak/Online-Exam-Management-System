@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/examPreview.css">
+        <script>
+            function goback(){
+                window.location.href='http://localhost:3000/studentHome';
+            }
+        </script>
+    </head>
+    <body>
+        <nav1>
+            <a href="/"><img src="images/logo.png" ></a>
+            <div class="nav-links" id="nav-links">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="#">Welcome , <%- user %></a></li>
+                    <li><a href="/adminHome">Home</a></li>
+                    <li><a href="/logout"><img src="images/Logouthead.png">Logout</a></li>
+                    
+                </ul>
+            </div>
+        </nav1><center>
+        <div class="congrats">
+        <h1>Congratulation Your examination submitted successfully</h1>
+        <h2>Yours marks are mailed....</h2>
+        <button onclick="goback()" >Back to course</button>
+        </div></center>
+
+    </body>
+</html>
+

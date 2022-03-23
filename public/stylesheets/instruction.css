@@ -1,0 +1,22 @@
+#timer{
+    border: 1px solid red;
+    padding: 5px;
+    width: 15%;
+}
+h1{
+    color: #00854A;
+}
+.btn{
+    text-align: center;
+    background-color: #00854A;
+    color: white;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+}
+textarea{
+    padding: 10px;
+    border: 1px dashed red;
+}

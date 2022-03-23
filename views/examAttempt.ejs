@@ -1,0 +1,159 @@
+<html>
+    <head>
+        <title>Examination Tab</title>
+        <link rel="stylesheet" href="stylesheets/examPreview.css">
+        <script src="/javascripts/Attempt.js"></script>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
+    </head>
+    <input type="hidden" value="<%= start %>" id="start">
+    <input type="hidden" value="<%= stop %>" id="stop">
+    <input type="hidden" value="<%=total%>" id="total">
+    <body id="exambody" class="shome">
+        <nav1>
+            <a href="/"><img src="images/logo.png" ></a>
+            <div class="nav-links" id="nav-links">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="#">Welcome , <%- user %></a></li>                   
+                </ul>
+            </div>
+        </nav1>
+        <hr>
+        
+
+        <script>
+            var a = document.getElementById('start').value;
+            var b = document.getElementById('stop').value;
+         var countDownDate = new Date(b).getTime();
+         var myfunc = setInterval(function() {
+             var now = new Date().getTime();
+             var timeleft = countDownDate - now;
+             var hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+             var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+             var seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+             document.getElementById("clockdiv").innerHTML = "Time Left : "+hours+":"+minutes+":"+seconds;
+             if(hours <= 0 && minutes <= 0 && seconds <= 0){
+                window.location.href = "final.jsp"; 
+                }
+ }, 1000)
+         </script>
+         <div class="question-details">
+             <h4>Question Details</h4>
+             <p>Question  : <%= message[0].question_id %></p>
+             <p>Exam Name : <%= exname %></p>
+         </div>
+         
+         <form action="/next" method="POST">
+        <div class="details">            
+        <div class="clock-division">
+            <h4><div id="clockdiv"></div></h4>
+            </div>
+        <div class="exampanel">
+            <h4><%= message[0].question %></h4></div>
+                    <div class="qcontainer">
+                        <input type="hidden" id="exid" value="<%= message[0].exam_id %>" name="exid">
+                        <input type="hidden" id="stime" value="<%= start %>" name="stime">
+                        <input type="hidden" id="stop" value="<%= stop %>" name="stop">
+                        <input type="hidden" value="<%= message[0].question_id %>" id="qid" name="qid">
+                        <input type="hidden" value="<%= exname %>" name="exname">
+                        <input type="hidden" value="<%= total %>" name="total" id="total">
+                        <input type="hidden" value="<%= change_from%>" name="chafrm" id="change">
+                <input type="radio" id="radio1" name="ans" value="<%= message[0].ans1 %>">
+                <label class="lbls" for="radio1"><%= message[0].ans1 %></label><br>
+                <input type="radio" id="radio2" name="ans" value="<%= message[0].ans2 %>">
+                <label class="lbls" for="radio2"><%= message[0].ans2 %></label><br>
+                <input type="radio" id="radio3" name="ans" value="<%= message[0].ans3 %>">
+                <label class="lbls" for="radio3"><%= message[0].ans3 %></label><br>
+                <input type="radio" id="radio4" name="ans" value="<%= message[0].ans4 %>">
+                <label class="lbls" for="radio4"><%= message[0].ans4 %></label><br>
+                <br>
+                <div class="exam-btn">
+                    <input type="submit" id="prev" style="float: left;" value="Previous" onclick="form.action='prev';">
+                    <input type="submit" id="next" value="Next">
+                    <input type="submit" id="submit" value="Submit" onclick="form.action='/review';">
+                </div>
+            </div>
+            </div>
+            <div class="num">
+                <h5>Navigation panel</h5>
+                <% for(var i=1;i<=total;i++){%>
+                    <input type="submit" class="numch" id="numch<%=i%>" value="<%=i%>" onclick="form.action='/numch?questionid=<%=i%>'">
+                <% } %>
+            
+                <!--<input style="background-color: green; border: 2px solid black; color: yellow;" type="submit" id="numch" value="" onclick="form.action='';"> -->
+                </div>
+        </form>
+        <input type="hidden" value="<%=stu_ans%>" id="stuans" readonly>
+        
+<script>
+   var qid = document.getElementById('qid').value;
+   var total = document.getElementById('total').value;
+   var radio1 = document.getElementById('radio1').value;
+   var radio2 = document.getElementById('radio2').value;
+   var radio3 = document.getElementById('radio3').value;
+   var radio4 = document.getElementById('radio4').value;
+   var change = document.getElementById('change').value;
+   var setstorage = "";
+   var curr_ques = parseInt(qid);
+   var prev_ques = parseInt(qid)-1;
+   var nect_ques = parseInt(qid)+1;
+   var setstoragec = "answer"+curr_ques;
+   for(var i=1;i<=parseInt(total);i++)
+   {
+       var numch = "numch"+i;
+       var getter = "answer"+i;
+       if(localStorage.getItem(getter)!=null && localStorage.getItem(getter)!='')
+       document.getElementById(numch).style.backgroundColor="#00854A";
+       else
+       document.getElementById(numch).style.backgroundColor="none";
+   }
+   if(window.location.href == "http://localhost:3000/next")
+   setstorage = "answer"+prev_ques;
+   else if(window.location.href == "http://localhost:3000/prev")
+   setstorage = "answer"+nect_ques;
+   else
+   setstorage = "answer"+change;
+   const stu_ans = document.getElementById('stuans').value;
+   localStorage.setItem(setstorage,stu_ans);
+   if(localStorage.getItem(setstoragec) == radio1)
+   document.getElementById('radio1').checked = true;
+   if(localStorage.getItem(setstoragec) == radio2)
+   document.getElementById('radio2').checked = true;
+   if(localStorage.getItem(setstoragec) == radio3)
+   document.getElementById('radio3').checked = true;
+   if(localStorage.getItem(setstoragec) == radio4)
+   document.getElementById('radio4').checked = true;
+    var total = document.getElementById('total').value;
+    if(qid == 1){
+    document.getElementById("prev").disabled = true;
+    document.getElementById("submit").disabled = true;}
+    if(qid == total){
+    document.getElementById("next").disabled = true; 
+    document.getElementById("submit").disabled = false;
+    }
+    if(qid!=1 && qid!=total)
+    document.getElementById("submit").disabled = true;
+    let cnt=0;
+    window.addEventListener('blur',()=>{
+       cnt++;
+       alert("Tab Switched..Count = "+cnt);
+       if(cnt == 4)
+       location.href='/review';
+    });
+    window.addEventListener('focus',()=>{
+
+    });
+    var elem = document.getElementById("myvideo");
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+}
+
+</script>
+    </body>
+</html>

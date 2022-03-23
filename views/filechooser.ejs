@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">  
+        <title>Admin page</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/adminHome.css">
+        <script src="javascripts/adminHome.js"></script>
+    </head>
+    <nav1>
+        <a href="/"><img src="/images/logo.png" ></a>
+        <div class="nav-links" id="nav-links">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="#">Welcome , Admin</a></li>
+                <li><a href="/adminHome">Home</a></li>
+                <li><a href="contact.html"><img src="/images/Logouthead.png">Logout</a></li>
+                
+            </ul>
+        </div>
+    </nav1>
+    <div class="upload-form" id="upload-form">
+        <h2>Upload Here!</h2>
+        <form action="/AddQues" name="myForm" enctype="multipart/form-data" method="post">
+            <input type="hidden" name="examid" value="<%= message %>">
+            <label for="test">
+                <div class="file">Files Allowed only in D drive</div>
+                <input type="file" file-input="files" name="csvfile">
+              </label><br><br><br>
+              <div class="signup"><a><button>Upload</button></a></div>
+                     
+        </form>
+    </div>
+    </body>        
+</html>

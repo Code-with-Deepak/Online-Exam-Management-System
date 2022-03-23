@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam Management System - User signup</title>
+    <link rel="stylesheet" href="stylesheets/index-signup.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,200&display=swap" rel="stylesheet">
+    <script src="javascripts/signup.js"></script>
+</head>
+<body>
+    <section class="home">
+        <nav>
+            <a href="index.jsp"><img src="images/logo.png" ></a>
+            <div class="nav-links" id="nav-links">
+            
+                <ul>
+                    <li><a href="index.jsp">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    
+                </ul>
+            </div>
+        </nav>
+        <div class="signup-column">
+            
+               <div class="signup-h">
+                <h2>Sign Up</h2>
+               </div>
+
+               <div class="signup-container">
+                <div class="steps">
+                    <a class="circle1" id="circle1" onclick="showMenu1()">1</a>
+                    <div class="hr-line"></div>
+                    <a class="circle2" id="circle2" onclick="checkpage1()">2</a>
+               </div>
+               <div class="signup-container1">
+                <div class="steps1">
+                <pre >Personal            College</pre>
+               </div>
+                </div>
+               
+                    <div id="errors"></div>
+                    <form action="/signup" name="frm" method="post">
+                        <div class="signup-box" id="signup1">
+                        <div class="signup-content">
+                            <input type="text" onblur="check(id)" name="uname" id="fname" placeholder="Name" required>
+                            <input type="email" onblur="check(id)" name="email" id="email" placeholder="Email" required>
+                            <input type="password" onblur="check(id)" name="password" id="password" placeholder="Password" required>
+                            <input type="password" onblur="check(id)" name="confirm-password" id="confirm-password" placeholder="Confirm password" required>
+                        </div>
+                        <div class="signup-button">
+                            <input type="button" onclick="checkpage1()" value="Next">
+                        </div> 
+                        </div>
+                        <div class="signup-box" style="display: none;" id="signup2">
+                                <div class="signup-content">
+                                    <input type="hidden" id="fname1" name="fname">
+                                    <input type="hidden" id="email1" name="email">
+                                    <input type="hidden" id="pass1" name="pass">
+                                    <div id="errors"></div>
+                                    <select onblur="check(id)" name="dpt" id="Department" required>
+                                        <option value="">Department</option>
+                                        <option value="IT">IT</option>
+                                        <option value="ECE">ECE</option>
+                                        <option value="EEE">EEE</option>
+                                        <option value="CSE">CSE</option>
+                                        <option value="BT">BT</option>
+                                        <option value="FT">FT</option>
+                                    </select>
+                                    <select name="year" onblur="check(id)" id="Year" required>
+                                        <option value="">Year</option>
+                                        <option value="1">1st</option>
+                                        <option value="2">2nd</option>
+                                        <option value="3">3rd</option>
+                                        <option value="4">4th</option>
+                                    </select>                            
+                                    <input type="text" onblur="check(id)" name="rollno" id="Register No" placeholder="Register No" required>
+                                    <input type="phone" onblur="check(id)" name="mbl" id="Mobile Number" placeholder="Mobile Number" required>
+                                </div>
+                                <div class="signup-button">
+                                    <input type="submit" value="Sign Up">
+                                </div>
+                     </div>
+                    </form>
+                    
+                </div>  
+                 </div>            
+    
+    </section>
+</body>
+</html>
