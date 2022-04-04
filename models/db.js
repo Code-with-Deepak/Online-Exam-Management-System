@@ -3,7 +3,7 @@ require('dotenv').config();
 
 exports.connect = () => {
 
-    mongoose.connect("mongodb://localhost:27017/EMS", {
+    mongoose.connect("mongodb+srv://Dbuser:deepak2002@cluster0.eylfl.mongodb.net/EMS?retryWrites=true&w=majority", {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       })
