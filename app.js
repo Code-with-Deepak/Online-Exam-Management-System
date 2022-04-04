@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+require('dotenv').config();
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var db = require('./models/db.js').connect();
@@ -78,4 +79,4 @@ app.get('/editExam/:id',messages,edit);
 
 app.get('/exportData',messages,exportd);
 
-app.listen(3000,console.log("Server Started"));
+app.listen(process.env.PORT,console.log("Server Started"));
