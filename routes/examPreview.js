@@ -8,7 +8,7 @@ router.post('/preview',async(req,res,next)=>{
     if(req.session.loggedIn == true && req.session.name!=null)
     {
         var rem;
-        var exname = req.body.exname;
+        var exname = req.body.exname || req.query.exname;
         var exid = req.body.exid;
         var stime = req.body.stime;
         var stop = req.body.stop;
