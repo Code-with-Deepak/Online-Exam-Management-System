@@ -14,7 +14,7 @@ router.post('/preview',async(req,res,next)=>{
         var stop = req.body.stop;
         var attempt = req.body.attempt;
         var total = req.body.total
-        Result.findOne({exam_name:{$regex:exname},regno:{$regex:req.session.regno}},(err,resultUp)=>{
+        var resultUp = Result.findOne({exam_name:{$regex:exname},regno:{$regex:req.session.regno}});
             console.log(resultUp.length);
         if(resultUp > 0)
         {
@@ -34,7 +34,6 @@ router.post('/preview',async(req,res,next)=>{
             })
         }
         res.render('examPreview.ejs',{exname:exname,start:stime,stop:stop,rem:rem,totalq:total});
-        });
     }
     else
     res.send("Invalid Access");
