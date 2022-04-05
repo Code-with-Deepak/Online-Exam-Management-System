@@ -19,7 +19,7 @@ router.post('/login', async(req, res, next) => {
     if(passworddecrpt){
       const token = jwt.sign(
         { regno },
-        process.env.TOKEN_KEY,
+        "token123",
         {
           expiresIn: "2h",
         }
