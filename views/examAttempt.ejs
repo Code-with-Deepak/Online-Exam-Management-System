@@ -108,12 +108,11 @@
        document.getElementById(numch).style.backgroundColor="none";
    }
    if(window.location.href == "http://localhost:3000/next")
-   setstorage = "answer"+prev_ques;
+   setstorage = "answer"+""+prev_ques;
    else if(window.location.href == "http://localhost:3000/prev")
-   setstorage = "answer"+nect_ques;
+   setstorage = "answer"+""+nect_ques;
    else
    setstorage = "answer"+change;
-   console.log(setstorage);
    const stu_ans = document.getElementById('stuans').value;
    localStorage.setItem(setstorage,stu_ans);
    if(localStorage.getItem(setstoragec) == radio1)
