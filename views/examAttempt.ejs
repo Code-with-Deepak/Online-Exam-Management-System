@@ -108,11 +108,12 @@
        document.getElementById(numch).style.backgroundColor="none";
    }
    if(window.location.href == "http://localhost:3000/next")
-   setstorage = "answer"+""+prev_ques;
+   setstorage = "answer"+prev_ques;
    else if(window.location.href == "http://localhost:3000/prev")
-   setstorage = "answer"+""+nect_ques;
+   setstorage = "answer"+nect_ques;
    else
    setstorage = "answer"+change;
+   alert();
    const stu_ans = document.getElementById('stuans').value;
    localStorage.setItem(setstorage,stu_ans);
    if(localStorage.getItem(setstoragec) == radio1)
@@ -140,19 +141,6 @@
        if(cnt == 4)
        location.href='/review';
     });
-    window.addEventListener('focus',()=>{
-
-    });
-    var elem = document.getElementById("myvideo");
-function openFullscreen() {
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) { /* Safari */
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { /* IE11 */
-    elem.msRequestFullscreen();
-  }
-}
 
 </script>
     </body>
