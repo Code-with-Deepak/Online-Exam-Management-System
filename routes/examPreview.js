@@ -23,6 +23,7 @@ router.post('/preview',async(req,res,next)=>{
         }
         else
         {
+            rem = attempt;
             Result.create({
                 exam_id:exid,
                 exam_name:exname,
