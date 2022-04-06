@@ -16,7 +16,7 @@ router.post('/preview',async(req,res,next)=>{
         var total = req.body.total
         var resultUp = Result.findOne({exam_name:{$regex:exname},regno:{$regex:req.session.regno}});
             console.log(resultUp.length);
-        if(resultUp > 0)
+        if(resultUp.exam_name != null)
         {
             rem = parseInt(resultUp.attempt_rem); 
             console.log(rem);
