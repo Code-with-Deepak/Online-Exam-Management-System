@@ -95,10 +95,10 @@
    var radio4 = document.getElementById('radio4').value;
    var change = document.getElementById('change').value;
    var setstorage = "";
-   var curr_ques = parseInt(qid);
-   var prev_ques = parseInt(qid)-1;
-   var nect_ques = parseInt(qid)+1;
-   var setstoragec = "answer"+curr_ques;
+   var curr_ques = "answer"+parseInt(qid);
+   var prev_ques = "answer"+parseInt(qid)-1;
+   var nect_ques = "answer"+parseInt(qid)+1;
+   var setstoragec = curr_ques;
    for(var i=1;i<=parseInt(total);i++)
    {
        var numch = "numch"+i;
@@ -109,11 +109,11 @@
        document.getElementById(numch).style.backgroundColor="none";
    }
    if(window.location.href == "http://localhost:3000/next"){
-   setstorage = "answer"+prev_ques;
+   setstorage = prev_ques;
     document.getElementById('state').innerHTML = setstorage;
     }
    else if(window.location.href == "http://localhost:3000/prev"){
-   setstorage = "answer"+nect_ques;
+   setstorage = nect_ques;
    document.getElementById('state').innerHTML = setstorage;
    }
    else{
