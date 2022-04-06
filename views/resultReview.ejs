@@ -64,7 +64,7 @@
                 dans = "dans"+(i-1).toString();
                 if(localStorage.getItem(str) == document.getElementById(dans).value)
                 mark++;
-                if(localStorage.getItem(str) != null){
+                if(localStorage.getItem(str) != ''){
                 document.getElementById(stat).innerHTML = "Answer Saved";
                 }
                 else{
