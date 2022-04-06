@@ -8,63 +8,6 @@
     <input type="hidden" value="<%= start %>" id="start">
     <input type="hidden" value="<%= stop %>" id="stop">
     <input type="hidden" value="<%=total%>" id="total">
-    <script>
-   var qid = document.getElementById('qid').value;
-   var total = document.getElementById('total').value;
-   var radio1 = document.getElementById('radio1').value;
-   var radio2 = document.getElementById('radio2').value;
-   var radio3 = document.getElementById('radio3').value;
-   var radio4 = document.getElementById('radio4').value;
-   var change = document.getElementById('change').value;
-   var setstorage = "";
-   var curr_ques = parseInt(qid);
-   var prev_ques = parseInt(qid)-1;
-   var nect_ques = parseInt(qid)+1;
-   var setstoragec = "answer"+curr_ques;
-   for(var i=1;i<=parseInt(total);i++)
-   {
-       var numch = "numch"+i;
-       var getter = "answer"+i;
-       if(localStorage.getItem(getter)!=null && localStorage.getItem(getter)!='')
-       document.getElementById(numch).style.backgroundColor="#00854A";
-       else
-       document.getElementById(numch).style.backgroundColor="none";
-   }
-   if(window.location.href == "http://localhost:3000/next")
-   setstorage = "answer"+prev_ques;
-   else if(window.location.href == "http://localhost:3000/prev")
-   setstorage = "answer"+nect_ques;
-   else
-   setstorage = "answer"+change;
-   const stu_ans = document.getElementById('stuans').value;
-   localStorage.setItem(setstorage,stu_ans);
-   if(localStorage.getItem(setstoragec) == radio1)
-   document.getElementById('radio1').checked = true;
-   if(localStorage.getItem(setstoragec) == radio2)
-   document.getElementById('radio2').checked = true;
-   if(localStorage.getItem(setstoragec) == radio3)
-   document.getElementById('radio3').checked = true;
-   if(localStorage.getItem(setstoragec) == radio4)
-   document.getElementById('radio4').checked = true;
-    var total = document.getElementById('total').value;
-    if(qid == 1){
-    document.getElementById("prev").disabled = true;
-    document.getElementById("submit").disabled = true;}
-    if(qid == total){
-    document.getElementById("next").disabled = true; 
-    document.getElementById("submit").disabled = false;
-    }
-    if(qid!=1 && qid!=total)
-    document.getElementById("submit").disabled = true;
-    let cnt=0;
-    window.addEventListener('blur',()=>{
-       cnt++;
-       alert("Tab Switched..Count = "+cnt);
-       if(cnt == 4)
-       location.href='/review';
-    });
-
-</script>
     <body id="exambody" class="shome">
         <nav1>
             <a href="/"><img src="images/logo.png" ></a>
@@ -141,5 +84,78 @@
                 </div>
         </form>
         <input type="hidden" value="<%=stu_ans%>" id="stuans" readonly>
+        <p id="state"></p>
+        
+<script>
+   var qid = document.getElementById('qid').value;
+   var total = document.getElementById('total').value;
+   var radio1 = document.getElementById('radio1').value;
+   var radio2 = document.getElementById('radio2').value;
+   var radio3 = document.getElementById('radio3').value;
+   var radio4 = document.getElementById('radio4').value;
+   var change = document.getElementById('change').value;
+   var setstorage = "";
+   var curr_ques = parseInt(qid);
+   var prev_ques = parseInt(qid)-1;
+   var nect_ques = parseInt(qid)+1;
+   var setstoragec = "answer"+curr_ques;
+   for(var i=1;i<=parseInt(total);i++)
+   {
+       var numch = "numch"+i;
+       var getter = "answer"+i;
+       if(localStorage.getItem(getter)!=null && localStorage.getItem(getter)!='')
+       document.getElementById(numch).style.backgroundColor="#00854A";
+       else
+       document.getElementById(numch).style.backgroundColor="none";
+   }
+   if(window.location.href == "http://localhost:3000/next")
+   setstorage = "answer"+prev_ques;
+   else if(window.location.href == "http://localhost:3000/prev")
+   setstorage = "answer"+nect_ques;
+   else
+   setstorage = "answer"+change;
+   document.getElementById('state').innerHTML = setstorage;
+   const stu_ans = document.getElementById('stuans').value;
+   localStorage.setItem(setstorage,stu_ans);
+   if(localStorage.getItem(setstoragec) == radio1)
+   document.getElementById('radio1').checked = true;
+   if(localStorage.getItem(setstoragec) == radio2)
+   document.getElementById('radio2').checked = true;
+   if(localStorage.getItem(setstoragec) == radio3)
+   document.getElementById('radio3').checked = true;
+   if(localStorage.getItem(setstoragec) == radio4)
+   document.getElementById('radio4').checked = true;
+    var total = document.getElementById('total').value;
+    if(qid == 1){
+    document.getElementById("prev").disabled = true;
+    document.getElementById("submit").disabled = true;}
+    if(qid == total){
+    document.getElementById("next").disabled = true; 
+    document.getElementById("submit").disabled = false;
+    }
+    if(qid!=1 && qid!=total)
+    document.getElementById("submit").disabled = true;
+    let cnt=0;
+    window.addEventListener('blur',()=>{
+       cnt++;
+       alert("Tab Switched..Count = "+cnt);
+       if(cnt == 4)
+       location.href='/review';
+    });
+    window.addEventListener('focus',()=>{
+
+    });
+    var elem = document.getElementById("myvideo");
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+}
+
+</script>
     </body>
 </html>
