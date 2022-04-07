@@ -95,9 +95,9 @@
    var radio4 = document.getElementById('radio4').value;
    var change = document.getElementById('change').value;
    var setstorage = "";
-   var curr_ques = "answer"+qid;
-   var prev_ques = "answer"+qid-1;
-   var nect_ques = "answer"+qid+1;
+   var curr_ques = qid;
+   var prev_ques = qid-1;
+   var nect_ques = qid+1;
    document.getElementById('state').innerHTML = curr_ques+" "+prev_ques+" "+nect_ques ;
    var setstoragec = curr_ques;
    for(var i=1;i<=parseInt(total);i++)
@@ -110,11 +110,11 @@
        document.getElementById(numch).style.backgroundColor="none";
    }
    if(window.location.href == "http://localhost:3000/next"){
-   setstorage = prev_ques;
+   setstorage = "answer"+prev_ques;
     document.getElementById('state').innerHTML = setstorage;
     }
    else if(window.location.href == "http://localhost:3000/prev"){
-   setstorage = nect_ques;
+   setstorage = "answer"+nect_ques;
    document.getElementById('state').innerHTML = setstorage;
    }
    else{
