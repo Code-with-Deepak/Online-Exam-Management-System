@@ -96,8 +96,9 @@
    var change = document.getElementById('change').value;
    var setstorage = "";
    var curr_ques = "answer"+qid;
-   var prev_ques = "answer"+(qid-1);
-   var nect_ques = "answer"+(qid+1);
+   var prev_ques = "answer"+qid-1;
+   var nect_ques = "answer"+qid+1;
+   document.getElementById('state').innerHTML = curr_ques+" "+prev_ques+" "+nect_ques ;
    var setstoragec = curr_ques;
    for(var i=1;i<=parseInt(total);i++)
    {
