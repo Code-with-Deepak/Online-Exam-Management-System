@@ -98,7 +98,6 @@
    var curr_ques = "answer"+qid;
    var prev_ques = "answer"+(qid-1);
    var nect_ques = "answer"+(qid+1);
-   alert(curr_ques+" "+prev_ques);
    var setstoragec = curr_ques;
    for(var i=1;i<=parseInt(total);i++)
    {
@@ -119,7 +118,6 @@
    }
    else{
    setstorage = "answer"+change;
-   document.getElementById('state').innerHTML = setstorage;
    }
    const stu_ans = document.getElementById('stuans').value;
    localStorage.setItem(setstorage,stu_ans);
