@@ -96,29 +96,28 @@
    var change = document.getElementById('change').value;
    var setstorage = "";
    var curr_ques = qid;
-   var prev_ques = qid-1;
-   var nect_ques = qid+1;
-   document.getElementById('state').innerHTML = curr_ques+" "+prev_ques+" "+nect_ques ;
+   var prev_ques = parseInt(qid)-1;
+   var nect_ques = parseInt(qid)+1;
    var setstoragec = curr_ques;
    for(var i=1;i<=parseInt(total);i++)
    {
        var numch = "numch"+i;
-       var getter = "answer"+i;
+       var getter = i;
        if(localStorage.getItem(getter)!=null && localStorage.getItem(getter)!='')
        document.getElementById(numch).style.backgroundColor="#00854A";
        else
        document.getElementById(numch).style.backgroundColor="none";
    }
    if(window.location.href == "http://localhost:3000/next"){
-   setstorage = "answer"+prev_ques;
+   setstorage = prev_ques;
     document.getElementById('state').innerHTML = setstorage;
     }
    else if(window.location.href == "http://localhost:3000/prev"){
-   setstorage = "answer"+nect_ques;
+   setstorage = nect_ques;
    document.getElementById('state').innerHTML = setstorage;
    }
    else{
-   setstorage = "answer"+change;
+   setstorage = change;
    }
    const stu_ans = document.getElementById('stuans').value;
    localStorage.setItem(setstorage,stu_ans);
